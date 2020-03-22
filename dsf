@@ -1,0 +1,163 @@
+#include <iostream>
+
+using namespace std;
+
+//1. Vamos a declarar una clase cuyos objetos van a ser los elementos que vamos
+//a guardar en un arreglo de objetos de esa clase
+
+class Elemento
+{
+    int valor = 0;
+    
+    public:
+    void setValor(int x)
+    {
+        valor = x;
+    }
+    
+    int getValor()
+    {
+        return valor;
+    }
+};
+
+//2. Declarar una clase cuyos objetos sirvan para almacenar una cantidad de objetos del tipo de la clase Elemento
+
+class ColeccionDeElementos
+{
+    Elemento coleccion[10];
+    int cuentaElementos = 0;
+    
+    public:
+    void agregarElemento(int valor)
+    {
+        Elemento temporal;
+        temporal.setValor(valor);
+        
+                
+        if(cuentaElementos > 9)
+            cout<<"La coleccion esta llena, no se pueden guardar mas objetos" << endl;
+        else
+        {
+            coleccion[cuentaElementos] = temporal;
+            cuentaElementos++;
+        }
+    }
+    
+    int obtenerElemento(unsigned int posicion)
+    {
+        if(posicion > 9)
+        {
+            cout<<"Posicion erronea!!!"<<endl;
+            return -1;
+        }
+        
+        return coleccion[posicion].getValor();        
+    }
+    
+    void traerTodaLaColeccion()
+    {
+        for(int i=0; i<cuentaElementos; ++i)
+            cout<<coleccion[i].getValor()<<",";
+        
+        cout<<endl;
+    }
+    
+    void eliminarElemento()
+    {
+        if(cuentaElementos > 9)
+        {
+            coleccion[9].setValor(0);
+            cuentaElementos = 9;
+        }
+        else
+        {
+            coleccion[cuentaElementos].setValor(0);
+            cuentaElementos--;
+        }
+                   
+        
+        if(cuentaElementos < 0)
+        {
+            cout<<"La coleccion ya esta vacia"<<endl;
+            cuentaElementos = 0;
+        }
+    }
+    
+};
+
+int main()
+{
+    return 0;
+
+}
+
+
+#include <iostream>
+using namespace std;
+
+class ListadeObjetos{
+    A arreg[20];
+    int cuentaElementos = 0;
+    
+    public:
+    void agregarElemento(int valor)
+    {
+        A temporal;
+        temporal.setValor(valor);
+        if(cuentaElementos > 20)
+            cout<<"La coleccion esta llena, no se pueden guardar mas objetos" << endl;
+        else
+        {
+            arreg[cuentaElementos] = temporal;
+            cuentaElementos++;
+        }
+    }
+    void quitarElemento(int posicion){
+        if (posicion>cuentaElementos){
+            cout<<"No hay un elemento en esta posicion"<<endl;
+        }
+        else{
+            arreg[posicion]=0
+        }
+    }
+    void desplegarElemento(int posiciondes){
+        if (posiciondes>cuentaElementos){
+            cout<<"No hay un elmento en esta posicion"<<endl;
+        }
+        else{
+            cout<<arreg[posicion]<<endl;
+        }
+        else if(posiciondes==-1){
+            for(int i=0;i<=cuentaElementos;i++){
+                cout<<arreg[i]<<endl;
+            }
+        }
+    }
+    
+    
+};
+class A{
+    int serial;
+    string denominacion;
+    int valu=0;
+    void setValu(int x){
+        valu=x
+    }
+    int getValu(){
+        return(valu);
+    }
+};
+nuevoObjetoLista(serialtemp,denomtemp,valor){
+    A objetotemp;
+    objetotemp.serial=serialtemp;
+    objetotemp.denominacion=denomtemp;
+    objetotemp.valu=valor;
+    ListadeObjetos.agregarElemento(objetotemp.valu);
+}
+int main()
+{
+    
+
+    return 0;
+}
