@@ -1,0 +1,77 @@
+#include <iostream>
+using namespace std;
+class A{
+    int serial;
+    string denominacion;
+    int valu=0;
+    public:
+    void setSerial(int ser){
+        serial=ser;
+    }
+    void setDenominacion(string den){
+        denominacion=den;
+    }
+    void setValu(int x){
+        valu=x;
+    }
+    int getValu(){
+        return(valu);
+    }
+};
+
+class ListadeObjetos{
+    A arreg[20];
+    int cuentaElementos = 0;
+    
+    public:
+    void agregarElemento(int valor)
+    {
+        A temporal;
+        temporal.setValu(valor);
+        if(cuentaElementos > 20)
+            cout<<"La coleccion esta llena, no se pueden guardar mas objetos" << endl;
+        else
+        {
+            arreg[cuentaElementos] = temporal;
+            cuentaElementos++;
+        }
+    }
+    void quitarElemento(int posicion){
+        if (posicion>cuentaElementos){
+            cout<<"No hay un elemento en esta posicion"<<endl;
+        }
+        else{
+            arreg[posicion].setValu(0);
+            cuentaElementos=cuentaElementos-1;
+        }
+    }
+    void desplegarElemento(int posiciondes){
+        if (posiciondes>cuentaElementos){
+            cout<<"No hay un elmento en esta posicion"<<endl;
+        }
+        else if(posiciondes==-1){
+            for(int i=0;i<=cuentaElementos;i++){
+                cout<<arreg[i].getValu()<<',';
+            }
+        }
+        else{
+            cout<<arreg[posiciondes].getValu()<<endl;
+        }
+    }
+    
+    
+};
+
+void nuevoObjetoLista(int serialtemp,string denomtemp,int valore){
+    A objetotemp;
+    A.setSerial(serialtemp);
+    A.setDenominacion(denomtemp);
+    A.setValu(valore);
+    ListadeObjetos.agregarElemento(objetotemp);
+};
+int main()
+{
+    
+
+    return 0;
+}
