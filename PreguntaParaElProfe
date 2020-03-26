@@ -3,7 +3,7 @@ using namespace std;
 class A{
     int serial;
     string denominacion;
-    int valu=0;
+    int valu;
     public:
     void setSerial(int ser){
         serial=ser;
@@ -11,11 +11,16 @@ class A{
     void setDenominacion(string den){
         denominacion=den;
     }
-    void setValu(int x){
+    void setValu(int x){             //Profe, aquí está el problema
         valu=x;
     }
     int getValu(){
         return(valu);
+    }
+    friend void nuevoObjetoLista(int serialtemp,string denomtemp,int valore, A& ob){
+        ob.serial=serialtemp;
+        ob.denominacion=denomtemp;
+        ob.valu=valore;
     }
 };
 
@@ -24,7 +29,7 @@ class ListadeObjetos{
     int cuentaElementos = 0;
     
     public:
-    void agregarElemento(int valor)
+    void agregarElemento(A valor)
     {
         A temporal;
         temporal.setValu(valor);
@@ -63,11 +68,12 @@ class ListadeObjetos{
 };
 
 void nuevoObjetoLista(int serialtemp,string denomtemp,int valore){
+    ListadeObjetos tempo;
     A objetotemp;
-    A.setSerial(serialtemp);
-    A.setDenominacion(denomtemp);
-    A.setValu(valore);
-    ListadeObjetos.agregarElemento(objetotemp);
+    objetotemp.setSerial(serialtemp);
+    objetotemp.setDenominacion(denomtemp);
+    objetotemp.setValu(valore);
+    tempo.agregarElemento(objetotemp);
 };
 int main()
 {
