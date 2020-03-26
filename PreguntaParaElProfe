@@ -17,11 +17,7 @@ class A{
     int getValu(){
         return(valu);
     }
-    friend void nuevoObjetoLista(int serialtemp,string denomtemp,int valore, A& ob){
-        ob.serial=serialtemp;
-        ob.denominacion=denomtemp;
-        ob.valu=valore;
-    }
+    friend void nuevoObjetoLista(int serialtemp,string denomtemp,int valore, A& ob);
 };
 
 class ListadeObjetos{
@@ -29,15 +25,13 @@ class ListadeObjetos{
     int cuentaElementos = 0;
     
     public:
-    void agregarElemento(A valor)
+    void agregarElemento(A objetorecibido)
     {
-        A temporal;
-        temporal.setValu(valor);
         if(cuentaElementos > 20)
             cout<<"La coleccion esta llena, no se pueden guardar mas objetos" << endl;
         else
         {
-            arreg[cuentaElementos] = temporal;
+            arreg[cuentaElementos] = objetorecibido;
             cuentaElementos++;
         }
     }
@@ -67,7 +61,7 @@ class ListadeObjetos{
     
 };
 
-void nuevoObjetoLista(int serialtemp,string denomtemp,int valore){
+void nuevoObjetoLista(int serialtemp,string denomtemp,int valore,A& ob){
     ListadeObjetos tempo;
     A objetotemp;
     objetotemp.setSerial(serialtemp);
@@ -77,7 +71,10 @@ void nuevoObjetoLista(int serialtemp,string denomtemp,int valore){
 };
 int main()
 {
-    
+    A chiamo;
+    nuevoObjetoLista(01,"primero",45,chiamo);
+    ListadeObjetos unodos;
+    unodos.desplegarElemento(0);
 
     return 0;
 }
