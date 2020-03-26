@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+class Fecha{
+    int agno;
+    int mes;
+    int dia;
+    int hora;
+    public:
+    void verifecha(int mes,int dia,int hora){
+        if (mes>12 || mes<1 || dia<=0 || dia >31 || hora <0 || hora >24){
+            cout<<"La fecha no es valida";
+        }
+        if(dia==31 && )
+       
+    }
+    friend class Cita;
+};
+class Cita{
+  string nombre1;
+  string nombre2;
+  string lugar;
+};
+
+int main()
+{
+    
+
+    return 0;
+}
