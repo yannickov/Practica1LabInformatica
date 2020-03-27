@@ -11,24 +11,26 @@ class A{
     void setDenominacion(string den){
         denominacion=den;
     }
-    void setValu(int x){             //Profe, aquí está el problema
+    void setValu(int x){             
         valu=x;
     }
     int getValu(){
         return(valu);
     }
-    friend void nuevoObjetoLista(int serialtemp,string denomtemp,int valore, A& ob);
+    friend void nuevoObjetoLista(int serialtemp,string denomtemp,int valore);
 };
 
 class ListadeObjetos{
     A arreg[20];
     int cuentaElementos = 0;
     
+    
     public:
     void agregarElemento(A objetorecibido)
     {
-        if(cuentaElementos > 20)
-            cout<<"La coleccion esta llena, no se pueden guardar mas objetos" << endl;
+        cout<<cuentaElementos<<endl;                //la Variable cuentaElementos no se actualiza
+        if(cuentaElementos > 20){
+            cout<<"La coleccion esta llena, no se pueden guardar mas objetos" << endl;}
         else
         {
             arreg[cuentaElementos] = objetorecibido;
@@ -57,11 +59,11 @@ class ListadeObjetos{
             cout<<arreg[posiciondes].getValu()<<endl;
         }
     }
-    
+    friend void nuevoObjetoLista(int serialtemp,string denomtemp,int valore);
     
 };
 
-void nuevoObjetoLista(int serialtemp,string denomtemp,int valore,A& ob){
+void nuevoObjetoLista(int serialtemp,string denomtemp,int valore){
     ListadeObjetos tempo;
     A objetotemp;
     objetotemp.setSerial(serialtemp);
@@ -71,10 +73,12 @@ void nuevoObjetoLista(int serialtemp,string denomtemp,int valore,A& ob){
 };
 int main()
 {
-    A chiamo;
-    nuevoObjetoLista(01,"primero",45,chiamo);
-    ListadeObjetos unodos;
-    unodos.desplegarElemento(0);
+    nuevoObjetoLista(01,"primero",45);
+    nuevoObjetoLista(02,"segundo",545);
+    nuevoObjetoLista(03,"tercero",47);
+    nuevoObjetoLista(04,"cuarto",342);
+    ListadeObjetos prueba;
+    prueba.desplegarElemento(0);           //Esto debería al menos retornar el valor, pero retorna un número largo extraño
 
     return 0;
 }
