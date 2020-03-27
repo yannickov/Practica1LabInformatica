@@ -28,13 +28,13 @@ class ListadeObjetos{
     public:
     void agregarElemento(A objetorecibido)
     {
-        cout<<cuentaElementos<<endl;                //la Variable cuentaElementos no se actualiza
         if(cuentaElementos > 20){
             cout<<"La coleccion esta llena, no se pueden guardar mas objetos" << endl;}
         else
         {
             arreg[cuentaElementos] = objetorecibido;
             cuentaElementos++;
+            cout<<cuentaElementos<<endl;                        //LA VARIABLE CONTADORA NO SE ACTUALIZA
         }
     }
     void quitarElemento(int posicion){
@@ -77,8 +77,6 @@ int main()
     nuevoObjetoLista(02,"segundo",545);
     nuevoObjetoLista(03,"tercero",47);
     nuevoObjetoLista(04,"cuarto",342);
-    ListadeObjetos prueba;
-    prueba.desplegarElemento(0);           //Esto debería al menos retornar el valor, pero retorna un número largo extraño
 
     return 0;
 }
