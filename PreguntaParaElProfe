@@ -18,22 +18,22 @@ class A{
     int getValu(){
         return(valu);
     }
-    string getDenominacion(){
-        cout<<"aqui si entro"<<endl;                       //Esto prueba que el metodo de la clase ListadeObjetos si entro aqui
+    string getDenominacion(){                   
         return(denominacion);
-        
     }
-    friend void nuevoObjetoLista(int serialtemp,string denomtemp,int valore);
+    int getSerial(){
+        return(serial);
+    }
+    friend A nuevoObjetoLista(int serialtemp,string denomtemp,int valore);
     friend class ListadeObjetos;
 };
 
 class ListadeObjetos{
-    A arreg[20];
-    
+    A arreg[21];
     public:
     void agregarElemento(A objetorecibido)
     {
-        if(cuentaElementos > 20){
+        if(cuentaElementos >=20){
             cout<<"La coleccion esta llena, no se pueden guardar mas objetos" << endl;}
         else
         {
@@ -42,47 +42,79 @@ class ListadeObjetos{
         }
     }
     void quitarElemento(int posicion){
-        if (posicion>cuentaElementos){
+        if (posicion>=cuentaElementos){
             cout<<"No hay un elemento en esta posicion"<<endl;
         }
         else{
             arreg[posicion].setValu(0);
+            arreg[posicion].setSerial(0);
+            arreg[posicion].setDenominacion("");
             cuentaElementos=cuentaElementos-1;
         }
     }
     int desplegarElemento(int posiciondes){
-        if (posiciondes>cuentaElementos){
+        if (posiciondes>=cuentaElementos){
             cout<<"No hay un elmento en esta posicion"<<endl;
         }
         else if(posiciondes==-1){
-            for(int i=0;i<=cuentaElementos;i++){
-                cout<<arreg[i].getValu()<<',';
+            for(int i=0;i<cuentaElementos;i++){
+                cout<<"Elemento numero "<<i+1<<endl;
+                cout<<"El numero serial es: "<<arreg[i].getSerial()<<",  ";
+                cout<<"La denominacion es: "<<arreg[i].getDenominacion()<<",  ";
+                cout<<"El valor del elemento es: "<<arreg[i].getValu()<<",  "<<endl;
             }
         }
         else{
-            cout<<"La posicion es: "<<arreg[posiciondes].getValu()<<endl;
+            cout<<"El numero serial es : "<<arreg[posiciondes].getSerial()<<endl;
             cout<<"La denominacion es: "<<arreg[posiciondes].getDenominacion()<<endl;
+            cout<<"El valor del elemento es: "<<arreg[posiciondes].getValu()<<endl;
         }
     }
-    friend void nuevoObjetoLista(int serialtemp,string denomtemp,int valore);
+    friend A nuevoObjetoLista(int serialtemp,string denomtemp,int valore);
     
 };
 
-void nuevoObjetoLista(int serialtemp,string denomtemp,int valore){
+A nuevoObjetoLista(int serialtemp,string denomtemp,int valore){
     ListadeObjetos tempo;
     A objetotemp;
     objetotemp.setSerial(serialtemp);
     objetotemp.setDenominacion(denomtemp);
     objetotemp.setValu(valore);
-    tempo.agregarElemento(objetotemp);
+    return(objetotemp);
 }
 int main()
 {
-    nuevoObjetoLista(01,"primero",45);
-    nuevoObjetoLista(02,"segundo",545);
-    nuevoObjetoLista(03,"tercero",47);
-    nuevoObjetoLista(04,"cuarto",342);
-    ListadeObjetos prueba;
-    prueba.desplegarElemento(2);
+    ListadeObjetos listu;  
+    
+    A prueb1=nuevoObjetoLista(01,"primero",46);               //Habilitar este bloque para ver funcionamiento general
+    listu.agregarElemento(prueb1);        //Y el método quitarElemento
+    A prueb2=nuevoObjetoLista(02,"segundo",63);
+    listu.agregarElemento(prueb2);
+    A prueb3=nuevoObjetoLista(03,"tercero",78);
+    listu.agregarElemento(prueb3);
+    
+    listu.desplegarElemento(4);         //
+    listu.quitarElemento(3);            //No hay elemento en esta posicion y el sistema lo detecta
+    cout<<"Lista actual: "<<endl;
+    listu.desplegarElemento(-1);
+    listu.quitarElemento(2);
+    cout<<"Nueva lista luego de remover el objeto"<<endl;
+    listu.desplegarElemento(-1);
+    
+                             //Habilitar este bloque para verificar líimite de elementos
+    /*for (int u=0;u<20;u++){                       //En el método agregarElemento, y para verificar el desplegamiento de todos los elementos
+        A prue=nuevoObjetoLista(u,"nada",u*2);
+        listu.agregarElemento(prue);
+    }
+    A pruebu=nuevoObjetoLista(02,"segundo",63);
+    listu.agregarElemento(pruebu);
+    A pruebu1=nuevoObjetoLista(02,"tercero",78);
+    listu.agregarElemento(pruebu1);
+    listu.desplegarElemento(-1);*/
+    
+
+
+    
+
     return 0;
 }
