@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+int cuentaElementos = 0;
 class A{
     int serial;
     string denominacion;
@@ -17,13 +18,17 @@ class A{
     int getValu(){
         return(valu);
     }
+    string getDenominacion(){
+        cout<<"aqui si entro"<<endl;                       //Esto prueba que el metodo de la clase ListadeObjetos si entro aqui
+        return(denominacion);
+        
+    }
     friend void nuevoObjetoLista(int serialtemp,string denomtemp,int valore);
+    friend class ListadeObjetos;
 };
 
 class ListadeObjetos{
     A arreg[20];
-    int cuentaElementos = 0;
-    
     
     public:
     void agregarElemento(A objetorecibido)
@@ -34,7 +39,6 @@ class ListadeObjetos{
         {
             arreg[cuentaElementos] = objetorecibido;
             cuentaElementos++;
-            cout<<cuentaElementos<<endl;                        //LA VARIABLE CONTADORA NO SE ACTUALIZA
         }
     }
     void quitarElemento(int posicion){
@@ -46,7 +50,7 @@ class ListadeObjetos{
             cuentaElementos=cuentaElementos-1;
         }
     }
-    void desplegarElemento(int posiciondes){
+    int desplegarElemento(int posiciondes){
         if (posiciondes>cuentaElementos){
             cout<<"No hay un elmento en esta posicion"<<endl;
         }
@@ -56,7 +60,8 @@ class ListadeObjetos{
             }
         }
         else{
-            cout<<arreg[posiciondes].getValu()<<endl;
+            cout<<"La posicion es: "<<arreg[posiciondes].getValu()<<endl;
+            cout<<"La denominacion es: "<<arreg[posiciondes].getDenominacion()<<endl;
         }
     }
     friend void nuevoObjetoLista(int serialtemp,string denomtemp,int valore);
@@ -70,13 +75,14 @@ void nuevoObjetoLista(int serialtemp,string denomtemp,int valore){
     objetotemp.setDenominacion(denomtemp);
     objetotemp.setValu(valore);
     tempo.agregarElemento(objetotemp);
-};
+}
 int main()
 {
     nuevoObjetoLista(01,"primero",45);
     nuevoObjetoLista(02,"segundo",545);
     nuevoObjetoLista(03,"tercero",47);
     nuevoObjetoLista(04,"cuarto",342);
-
+    ListadeObjetos prueba;
+    prueba.desplegarElemento(2);
     return 0;
 }
