@@ -86,23 +86,28 @@ int main()
 {
     ListadeObjetos listu;  
     
-    A prueb1=nuevoObjetoLista(01,"primero",46);               //Habilitar este bloque para ver funcionamiento general
-    listu.agregarElemento(prueb1);        //Y el método quitarElemento
+    
+    //Habilitar este bloque para ver funcionamiento general y el método quitarElemento
+    
+    /*A prueb1=nuevoObjetoLista(01,"primero",46);               
+    listu.agregarElemento(prueb1);        
     A prueb2=nuevoObjetoLista(02,"segundo",63);
     listu.agregarElemento(prueb2);
     A prueb3=nuevoObjetoLista(03,"tercero",78);
     listu.agregarElemento(prueb3);
     
-    listu.desplegarElemento(4);         //
+    listu.desplegarElemento(1);         //Se despliega un elemento cualquiera
     listu.quitarElemento(3);            //No hay elemento en esta posicion y el sistema lo detecta
     cout<<"Lista actual: "<<endl;
-    listu.desplegarElemento(-1);
-    listu.quitarElemento(2);
+    listu.desplegarElemento(-1);        
+    listu.quitarElemento(2);            //se quita el ultimo elemento
     cout<<"Nueva lista luego de remover el objeto"<<endl;
-    listu.desplegarElemento(-1);
+    listu.desplegarElemento(-1);*/
     
-                             //Habilitar este bloque para verificar líimite de elementos
-    /*for (int u=0;u<20;u++){                       //En el método agregarElemento, y para verificar el desplegamiento de todos los elementos
+    //Habilitar este bloque para verificar líimite de elementos
+    //En el método agregarElemento, y para verificar el desplegamiento de todos los elementos
+    
+    /*for (int u=0;u<20;u++){                      
         A prue=nuevoObjetoLista(u,"nada",u*2);
         listu.agregarElemento(prue);
     }
@@ -112,9 +117,5 @@ int main()
     listu.agregarElemento(pruebu1);
     listu.desplegarElemento(-1);*/
     
-
-
-    
-
     return 0;
 }
