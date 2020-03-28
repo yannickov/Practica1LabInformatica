@@ -7,10 +7,13 @@ class Fecha{
     int dia;
     int hora;
     public:
-    void setData(int anno,mese,day,ora){
-        agno=anno;mes=mese;dia=day;hora=ora;
-    }
-    void verifecha(int mes,int dia,int hora){
+    void setData(int anno,int mese,int day,int ora){
+        agno=anno;mes=mese;dia=day;hora=ora;}
+    int getAgno(){return(agno);}
+    int getMes(){return(mes);}
+    int getDia(){return(dia);}
+    int getHora(){return(hora);}
+    void verifecha(int agno,int mes,int dia,int hora){
         if (mes>12 || mes<1 || dia<=0 || dia >31 || hora <0 || hora >24){
             cout<<"La fecha no es valida";
         }
@@ -23,8 +26,6 @@ class Fecha{
         if(dia==29 && (agno%4!=0 && agno%400!=0)){
             cout<<"La fecha no es valida";
         }
-        
-       
     }
     friend class Cita;
 };
@@ -32,36 +33,39 @@ class Cita{
   string nombre1;
   string nombre2;
   string lugar;
-  public:
-  void setCita(string nome1,nome2,lugo){
-      nombre1=nome1;nombre2=nome2;lugar=lugo;
-  }
+  Fecha objetodata;
   friend class ClaseExterna;
 };
 class ClaseExterna{
     Cita temporal;
     Cita Listado[10];
     int contador=0;
-    void crearCita(string nome1,string nome2,string lugo,int anno,int mese,int day,int ora){
+    public:
+    void crearCita(string nome1,string nome2,string lugo,Fecha objetofecha){
         temporal.nombre1=nome1;
         temporal.nombre2=nome2;
         temporal.lugar=lugo;
-        temporal.agno=anno;
-        temporal.mes=mese;
-        temporal.dia=day;
-        temporal.hora=ora;
+        temporal.objetodata=objetofecha;
         if (contador>10){
             cout<<"Numero maximo de citas alcanzado";
         }
         Listado[contador]=temporal;
         contador=contador+1;
     }
+    friend Cita consultarCitas(int posicion);
     
 };
-
+Cita consultarCitas(int posicion){
+    Cita testy;
+    
+}
 int main()
 {
-    
+    Fecha prueb;
+    prueb.setData(2018,8,2,7);
+    ClaseExterna prueba;
+    prueba.crearCita("uno","dos","parque",prueb);
+    prueb.verifecha(2012,2,29,24);
 
     return 0;
 }
