@@ -55,13 +55,11 @@ class ClaseExterna{
     string getNombre1(){return(temporal.nombre1);}
     string getNombre2(){return(temporal.nombre2);}
     string getLugar(){return(temporal.lugar);}
-    int getAgno(){return()}
     friend void consultarCitas();
     
 };
 void consultarCitas(){
     ClaseExterna tes;
-    tes.getAgno();
     
 }
 int main()
@@ -71,6 +69,7 @@ int main()
     ClaseExterna prueba;
     prueba.crearCita("uno","dos","parque",prueb);
     prueb.verifecha(2012,2,29,24);
+    prueb.verifecha(2013,2,29,4);      ///Esta fecha no es valida. El sistema lo detecta
     consultarCitas();
 
     return 0;
